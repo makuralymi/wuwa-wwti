@@ -335,7 +335,7 @@
       {
         q: '你最常刷哪类视频?',
         a: [
-          ['竞品对比视频', 'mx'],
+          ['单推角色二创', 'oshi'],
           ['吹爆或怒喷视频', 'drama'],
           ['配队和声骸攻略', 'guide'],
           ['评论区吵架切片', 'chaos']
@@ -365,7 +365,7 @@
           ['先看完整信息再说', 'logic'],
           ['开骂, 这还用想?', 'rage'],
           ['不说话, 看猴戏', 'silent'],
-          ['阴阳两句, 点到为止', 'drama']
+          ['先护一手, 等反转', 'kz']
         ]
       },
       {
@@ -390,8 +390,8 @@
         q: '你怎么看另一款竞品游戏?',
         a: [
           ['不关我事', 'silent'],
-          ['其实也还行, 但是...', 'mx'],
-          ['拿来对比才有节目效果', 'mx'],
+          ['不比较, 我只玩我想玩的', 'normal'],
+          ['看吵架比看游戏有意思', 'chaos'],
           ['谁吵得凶我看谁', 'chaos']
         ]
       },
@@ -401,7 +401,7 @@
           ['倍率和机制', 'speed'],
           ['立绘和性格', 'waifu'],
           ['有没有节奏点', 'drama'],
-          ['内鬼爆料准不准', 'leak']
+          ['偷跑情报准不准', 'leak']
         ]
       },
       {
@@ -430,97 +430,172 @@
           ['回来骂两句再走', 'rage'],
           ['等下个大节奏', 'chaos']
         ]
+      },
+      {
+        q: '前瞻前刷到偷跑图, 你会?',
+        a: [
+          ['先看来源, 当情报参考', 'leak'],
+          ['等官方, 不被剧透', 'silent'],
+          ['转给朋友一起吃瓜', 'group'],
+          ['看机制会不会影响抽卡', 'logic']
+        ]
+      },
+      {
+        q: '看到“测试服改动”帖子, 你最像?',
+        a: [
+          ['蹲后续爆料和拆包图', 'leak'],
+          ['看数据再调整资源规划', 'guide'],
+          ['直接开骂怎么又改', 'rage'],
+          ['不点, 怕剧透', 'silent']
+        ]
+      },
+      {
+        q: '有人说新角色被偷跑了, 你会?',
+        a: [
+          ['问有没有原图和时间线', 'leak'],
+          ['只看立绘好不好看', 'waifu'],
+          ['看评论区谁在带节奏', 'drama'],
+          ['等实装再说', 'normal']
+        ]
+      },
+      {
+        q: '你抽角色最常见的理由是?',
+        a: [
+          ['强度够高, 能改善体验', 'speed'],
+          ['我单推, 不抽不算活着', 'oshi'],
+          ['剧情写得好, 我被打动了', 'story'],
+          ['先看节奏和评价再说', 'critic']
+        ]
+      },
+      {
+        q: '刷到一个能用但不完美的声骸, 你会?',
+        a: [
+          ['先用着, 不折磨自己', 'silent'],
+          ['继续刷, 这词条不干净', 'echo'],
+          ['看攻略说能不能毕业', 'guide'],
+          ['算提升值再决定', 'logic']
+        ]
+      },
+      {
+        q: '你最受不了哪种情况?',
+        a: [
+          ['单推角色戏份太少', 'oshi'],
+          ['声骸副词条全歪', 'echo'],
+          ['官方又犯低级错误', 'rage'],
+          ['社区天天复读同一套节奏', 'critic']
+        ]
       }
     ];
 
     const typeData = {
-      MXZ: {
-        name: '米孝子',
-        color: '#ff5c7a',
-        tags: ['mx'],
-        desc: '你对鸣潮的热爱, 主要体现在证明它不如另一款游戏。\n每次评价前, 你都要先把隔壁请上审判席。\n你不是来玩鸣潮的, 你是来做跨游戏法医鉴定的。'
-      },
       KXZ: {
         name: '库孝子',
         color: '#f4c542',
         tags: ['kz'],
+        threshold: 2,
+        unlock: '护游/信仰倾向达到 2 分。',
         desc: '你不玩游戏, 你是在守护信仰。\nBUG 是设计深度, 优化差是设备不配, 争议是玩家理解不够。\n你不是玩家, 你是公关部的外包志愿者。'
       },
       JLDS: {
         name: '节奏大师',
         color: '#ff7a45',
         tags: ['drama', 'rage'],
+        threshold: 2,
+        unlock: '节奏或开骂倾向合计达到 2 分。',
         desc: '你不解决问题, 你制造问题。\n断章取义、放大情绪、及时消失, 是你的三段共鸣技能。\n社区没有你会安静很多, 也会少很多流量。'
       },
       MLXR: {
         name: '麻辣仙人',
         color: '#ff5c9a',
         tags: ['waifu'],
+        threshold: 2,
+        unlock: '角色厨倾向达到 2 分。',
         desc: '角色必须围着你转。\n不能有 CP, 不能有朋友, 不能有自己的生活。\n如果她笑了, 那一定是对你笑。'
       },
-      JSYG: {
+      OSHI: {
+        name: '单推人',
+        color: '#ff8fc7',
+        tags: ['oshi'],
+        threshold: 2,
+        unlock: '单推/本命/角色偏爱倾向达到 2 分。',
+        desc: '你的账号不是账号, 是本命的电子痛包。\n强度可以等售后, 剧情可以靠脑补, 但镜头少一秒你都要记进小本本。\n别人抽角色是扩充队伍, 你抽角色是在给单推交物业费。'
+      },
+      SPEED: {
         name: '竞速野狗',
         color: '#5ad6b8',
         tags: ['speed'],
+        threshold: 2,
+        unlock: '强度/效率倾向达到 2 分。',
         desc: '你不看剧情, 不听音乐, 不逛风景。\n你只关心能不能再快 0.3 秒。\n快乐如果会降低效率, 你会选择不快乐。'
       },
+      ECHO: {
+        name: '声骸厨',
+        color: '#67d6ff',
+        tags: ['echo'],
+        threshold: 2,
+        unlock: '声骸/词条/毕业套装执念达到 2 分。',
+        desc: '你刷的不是声骸, 是电子洁癖的体检报告。\n少一条双爆像人生污点, 歪一次防御像系统在辱骂你。\n别人玩鸣潮是开放世界, 你玩鸣潮是无限期词条劳改。'
+      },
       MZK: {
-        name: '米中客',
+        name: '伪理中客',
         color: '#b48cff',
         tags: ['logic', 'critic'],
-        desc: '你自称中立, 但句式经常是: 我不站队, 但是...\n你觉得自己很理性, 只是这份理性偶尔会精准偏向同一个方向。\n你的逻辑像开服服务器, 表面稳定, 实则排队。'
+        threshold: 2,
+        unlock: '理性分析或挑刺倾向合计达到 2 分。',
+        desc: '你每句话都从“我不站队”开始, 然后精准站到同一边。\n你不是没有立场, 你只是给立场穿了件客观外套。\n别人吵架靠嗓门, 你靠标点符号和三段论阴阳。'
       },
       MMR: {
         name: '萌萌人',
         color: '#ffd36f',
         tags: ['story', 'waifu'],
+        threshold: 2,
+        unlock: '剧情或角色共情倾向合计达到 2 分。',
         desc: '你对游戏的理解是: 哇好可爱, 啊她哭了我也哭, 这个可以当头像。\n你不是被运营拿捏, 你是主动把手伸进拿捏机里。\n你是游戏公司的 KPI。'
       },
-      DLG: {
-        name: '毒攻略',
-        color: '#67d6ff',
-        tags: ['guide'],
-        desc: '你的视频标题是新手必看, 实际效果是带人走向错误的彼岸。\n你不是在做攻略, 你是在做筛选。\n能活着看完还不被误导的人, 才配进入下一阶段。'
-      },
-      NGL: {
-        name: '内鬼佬',
+      LEAK: {
+        name: '内鬼订阅户',
         color: '#7cd66b',
         tags: ['leak'],
-        desc: '你掌握一切内部消息, 准确率看心情。\n你的存在意义是让玩家提前兴奋, 提前失望, 提前开骂。\n版本还没来, 你已经把节奏排到了下个版本。'
-      },
-      CLL: {
-        name: '吃流量',
-        color: '#f28f45',
-        tags: ['chaos', 'traffic', 'ego'],
-        desc: '什么火你做什么。\n今天测评, 明天爆料, 后天开骂。\n你没有立场, 你只有推荐算法。'
+        threshold: 2,
+        unlock: '偷跑/爆料/测试服情报倾向达到 2 分。',
+        desc: '你不是看爆料, 你是给内鬼消息办了包月。\n前瞻还没开, 你已经把糊图、拆包和测试服传话看成连续剧。\n版本没上线, 你的期待和失望已经提前续费。'
       },
       DEAD: {
         name: '已退坑但没完全退',
         color: '#9c9c9c',
         tags: ['dead'],
+        threshold: 1,
+        unlock: '选择退坑但仍刷消息的强特征选项。',
         desc: '你说你不玩了。\n但你每天都在看消息。\n你不是退坑, 你是幽灵玩家, 服务器关了你可能还在评论区出没。'
       },
       WOC: {
         name: '卧槽观察者',
         color: '#ffffff',
         tags: ['normal', 'group'],
+        threshold: 2,
+        unlock: '分享/围观/转发倾向合计达到 2 分。',
         desc: '不站队, 不长篇输出, 只会: 卧槽? 又来? 典。\n你是互联网的围观摄像头。\n你不生产节奏, 你只是把节奏截图给朋友。'
       },
       CTRL: {
-        name: '控制狂玩家',
+        name: '指导厨',
         color: '#5ad6b8',
         tags: ['logic', 'guide', 'speed'],
-        desc: '你不是玩游戏, 你是在管理项目。\n资源规划精确到分钟, 声骸词条像绩效表。\n如果人生有存档键, 你已经通关三次了。'
+        threshold: 2,
+        unlock: '攻略/纠错/效率指导倾向合计达到 2 分。',
+        desc: '你看到别人玩游戏, 就像教导主任看到学生没穿校服。\n配队要管, 词条要管, 手法要管, 连别人爽不爽你都要审批。\n你不是攻略作者, 你是评论区流动监考。'
       },
       SMD: {
         name: '沉默的大多数',
         color: '#b7b7b7',
         tags: ['silent'],
+        threshold: 2,
+        unlock: '沉默倾向达到 2 分, 或没有其他类型命中时兜底。',
         desc: '你什么都知道, 但什么都不说。\n你看着社区打架, 就像看猴戏。\n偶尔点赞, 已经是你最大的参与。'
       }
     };
 
-    const priority = ['MXZ', 'KXZ', 'JLDS', 'MLXR', 'JSYG', 'CTRL', 'DLG', 'NGL', 'MZK', 'MMR', 'CLL', 'DEAD', 'WOC', 'SMD'];
+    const galleryOrder = ['KXZ', 'JLDS', 'MLXR', 'OSHI', 'SPEED', 'ECHO', 'CTRL', 'LEAK', 'MZK', 'MMR', 'DEAD', 'WOC', 'SMD'];
+    const resultOrder = ['KXZ', 'JLDS', 'MLXR', 'OSHI', 'SPEED', 'ECHO', 'LEAK', 'CTRL', 'MZK', 'MMR', 'DEAD', 'WOC', 'SMD'];
 
     const state = {
       index: 0,
@@ -546,7 +621,16 @@
       state.score = {};
       const allTags = new Set();
       questions.forEach(q => q.a.forEach(opt => allTags.add(opt[1])));
+      Object.values(typeData).forEach(type => type.tags.forEach(tag => allTags.add(tag)));
       allTags.forEach(tag => { state.score[tag] = 0; });
+    }
+
+    function getTypeScore(type) {
+      return type.tags.reduce((sum, tag) => sum + (state.score[tag] || 0), 0);
+    }
+
+    function matchesType(type) {
+      return getTypeScore(type) >= type.threshold;
     }
 
     function svgFor(typeCode) {
@@ -603,11 +687,11 @@
     function pickType() {
       const typeScores = {};
       Object.entries(typeData).forEach(([code, type]) => {
-        typeScores[code] = type.tags.reduce((sum, tag) => sum + (state.score[tag] || 0), 0);
+        typeScores[code] = getTypeScore(type);
       });
 
-      for (const code of priority) {
-        if (typeScores[code] >= 2) {
+      for (const code of resultOrder) {
+        if (matchesType(typeData[code])) {
           return { code, typeScores };
         }
       }
@@ -646,7 +730,7 @@
     }
 
     function renderGallery() {
-      document.getElementById('galleryGrid').innerHTML = priority.map(code => {
+      document.getElementById('galleryGrid').innerHTML = galleryOrder.map(code => {
         const type = typeData[code];
         return `
           <button class="type-card" onclick="renderTypeDetail('${code}')">
@@ -667,6 +751,7 @@
         <div>
           <h3>${code} - ${type.name}</h3>
           <p>${type.desc}</p>
+          <p>达成方式: ${type.unlock}</p>
           <p>命中标签: ${type.tags.join(' / ')}</p>
         </div>
       `;
