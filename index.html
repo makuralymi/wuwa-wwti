@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WWTI 经典版人格测试</title>
+  <style>
+    :root {
+      --bg: #111;
+      --panel: #202020;
+      --panel-2: #2a2a2a;
+      --text: #fff;
+      --muted: #b7b7b7;
+      --line: #3a3a3a;
+      --accent: #f4c542;
+      --danger: #ff5c7a;
+      --ok: #5ad6b8;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(135deg, rgba(244, 197, 66, 0.10), transparent 30%),
+        linear-gradient(315deg, rgba(255, 92, 122, 0.12), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      text-align: center;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: 0;
+      border-radius: var(--radius);
+      transition: transform .14s ease, background .14s ease, border-color .14s ease;
+    }
+    button:hover { transform: translateY(-1px); }
+
+    .shell {
+      width: min(920px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 50px;
+    }
+
+    .card {
+      max-width: 720px;
+      margin: 28px auto;
+      padding: 22px;
+      background: rgba(32, 32, 32, 0.94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .32);
+    }
+
+    .wide-card {
+      max-width: 1040px;
+    }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--accent);
+      background: #181818;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .title {
+      font-size: clamp(34px, 8vw, 74px);
+      line-height: 1.02;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 16px auto 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn, .option {
+      display: block;
+      width: min(460px, 100%);
+      margin: 10px auto;
+      padding: 12px 18px;
+      background: #444;
+      color: #fff;
+    }
+
+    .btn:hover, .option:hover { background: #666; }
+    .btn-accent {
+      background: var(--accent);
+      color: #111;
+      font-weight: 900;
+    }
+    .btn-accent:hover { background: #ffd767; }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: #fff;
+    }
+    .btn-ghost:hover { background: #2f2f2f; }
+
+    .hero-art, .result-img, .type-img {
+      width: 100%;
+      max-width: 560px;
+      margin: 20px auto 0;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #181818;
+    }
+
+    .progress {
+      margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .bar {
+      width: 100%;
+      height: 10px;
+      margin-top: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #141414;
+      border: 1px solid var(--line);
+    }
+
+    .bar span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--danger), var(--ok));
+      transition: width .18s ease;
+    }
+
+    #question {
+      font-size: clamp(24px, 5vw, 40px);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .result-code {
+      color: var(--accent);
+      font-size: clamp(38px, 8vw, 76px);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .result-name {
+      font-size: clamp(24px, 5vw, 42px);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .desc {
+      color: #e8e8e8;
+      white-space: pre-wrap;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .score-list {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .score-pill {
+      padding: 7px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #181818;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .type-card {
+      width: 100%;
+      margin: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #1b1b1b;
+      color: #fff;
+      text-align: left;
+    }
+
+    .type-card:hover { background: #262626; }
+    .type-card strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 18px;
+      line-height: 1.35;
+    }
+    .type-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .type-detail {
+      display: none;
+      grid-template-columns: minmax(220px, .75fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #181818;
+      text-align: left;
+    }
+    .type-detail.active { display: grid; }
+    .type-detail h3 {
+      color: var(--accent);
+      font-size: clamp(28px, 5vw, 52px);
+      line-height: 1.1;
+    }
+    .type-detail p {
+      margin-top: 12px;
+      color: #e8e8e8;
+      line-height: 1.85;
+      white-space: pre-wrap;
+    }
+
+    .note {
+      margin-top: 14px;
+      color: #8f8f8f;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 22px, 920px); padding-top: 14px; }
+      .card { margin: 14px auto; padding: 16px; }
+      .actions .btn { width: 100%; }
+      .type-detail { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section id="home" class="screen active">
+      <div class="card">
+        <div class="eyebrow">WWTI classic</div>
+        <h1 class="title">鸣潮社区人格测试</h1>
+        <p class="subtitle">参考 demo.html 的经典版: 题少、嘴毒、按标签计数。不要拿它当正经心理测评, 这只是给互联网围观群众做的电子外号生成器。</p>
+        <img id="homeImg" class="hero-art" alt="WWTI 经典版封面" />
+        <div class="actions">
+          <button class="btn btn-accent" id="startBtn">开始测试</button>
+          <button class="btn btn-ghost" id="galleryBtn">查看人格图鉴</button>
+        </div>
+        <p class="note">本页为粉丝向娱乐内容。鸣潮相关角色、术语与世界观属于其权利方。</p>
+      </div>
+    </section>
+
+    <section id="quiz" class="screen">
+      <div class="card" id="quizCard">
+        <div class="progress">
+          <span id="progressText">1 / 12</span>
+          <div class="bar"><span id="progressBar"></span></div>
+        </div>
+        <h2 id="question">加载中...</h2>
+        <div id="options"></div>
+        <div class="actions">
+          <button class="btn btn-ghost" id="restartMidBtn">重开</button>
+          <button class="btn btn-ghost" id="homeMidBtn">回首页</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="screen">
+      <div class="card" id="resultCard"></div>
+    </section>
+
+    <section id="gallery" class="screen">
+      <div class="card wide-card">
+        <div class="eyebrow">WWTI 图鉴</div>
+        <h2 class="title">全部人格图鉴</h2>
+        <p class="subtitle">点击卡片查看完整描述。这里用的是经典版判定库, 和 demo.html 的类型方向一致。</p>
+        <div class="actions">
+          <button class="btn btn-accent" id="galleryStartBtn">开始测试</button>
+          <button class="btn btn-ghost" id="galleryHomeBtn">回首页</button>
+        </div>
+        <div id="typeDetail" class="type-detail"></div>
+        <div id="galleryGrid" class="gallery-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: '你怎么看鸣潮?',
+        a: [
+          ['神作, 不接受反驳', 'kz'],
+          ['一般, 但我还在玩', 'silent'],
+          ['未来可期, 先别急', 'kz'],
+          ['我主要看乐子', 'chaos']
+        ]
+      },
+      {
+        q: '你最常刷哪类视频?',
+        a: [
+          ['竞品对比视频', 'mx'],
+          ['吹爆或怒喷视频', 'drama'],
+          ['配队和声骸攻略', 'guide'],
+          ['评论区吵架切片', 'chaos']
+        ]
+      },
+      {
+        q: '你会认真看剧情吗?',
+        a: [
+          ['全跳, 奖励在哪', 'speed'],
+          ['只看我推的角色', 'waifu'],
+          ['认真看, 还会复盘', 'story'],
+          ['看完专门找槽点', 'critic']
+        ]
+      },
+      {
+        q: '你发评论的主要目的是什么?',
+        a: [
+          ['分享体验', 'normal'],
+          ['找同温层', 'group'],
+          ['带点节奏', 'drama'],
+          ['刷存在感', 'ego']
+        ]
+      },
+      {
+        q: '看到版本争议, 你第一反应是?',
+        a: [
+          ['先看完整信息再说', 'logic'],
+          ['开骂, 这还用想?', 'rage'],
+          ['不说话, 看猴戏', 'silent'],
+          ['阴阳两句, 点到为止', 'drama']
+        ]
+      },
+      {
+        q: '你最在意什么?',
+        a: [
+          ['强度和效率', 'speed'],
+          ['角色和人设', 'waifu'],
+          ['剧情和演出', 'story'],
+          ['乐子和流量', 'chaos']
+        ]
+      },
+      {
+        q: '如果官方犯错, 你会?',
+        a: [
+          ['理性分析问题', 'logic'],
+          ['直接开喷', 'rage'],
+          ['先截图, 看谁能赢', 'chaos'],
+          ['做素材, 赶热度', 'traffic']
+        ]
+      },
+      {
+        q: '你怎么看另一款竞品游戏?',
+        a: [
+          ['不关我事', 'silent'],
+          ['其实也还行, 但是...', 'mx'],
+          ['拿来对比才有节目效果', 'mx'],
+          ['谁吵得凶我看谁', 'chaos']
+        ]
+      },
+      {
+        q: '新角色出来后, 你最先看?',
+        a: [
+          ['倍率和机制', 'speed'],
+          ['立绘和性格', 'waifu'],
+          ['有没有节奏点', 'drama'],
+          ['内鬼爆料准不准', 'leak']
+        ]
+      },
+      {
+        q: '你最常说的一句话像哪句?',
+        a: [
+          ['其实可以更好', 'logic'],
+          ['你懂个屁', 'rage'],
+          ['无所谓', 'silent'],
+          ['我早就说了', 'ego']
+        ]
+      },
+      {
+        q: '看到攻略标题“版本答案来了”, 你会?',
+        a: [
+          ['立刻收藏照抄', 'guide'],
+          ['先看评论区有没有骂错', 'critic'],
+          ['转发给朋友一起审判', 'group'],
+          ['我自己会算, 不用你教', 'logic']
+        ]
+      },
+      {
+        q: '你说退坑之后通常会?',
+        a: [
+          ['真不看了', 'silent'],
+          ['每天还刷消息', 'dead'],
+          ['回来骂两句再走', 'rage'],
+          ['等下个大节奏', 'chaos']
+        ]
+      }
+    ];
+
+    const typeData = {
+      MXZ: {
+        name: '米孝子',
+        color: '#ff5c7a',
+        tags: ['mx'],
+        desc: '你对鸣潮的热爱, 主要体现在证明它不如另一款游戏。\n每次评价前, 你都要先把隔壁请上审判席。\n你不是来玩鸣潮的, 你是来做跨游戏法医鉴定的。'
+      },
+      KXZ: {
+        name: '库孝子',
+        color: '#f4c542',
+        tags: ['kz'],
+        desc: '你不玩游戏, 你是在守护信仰。\nBUG 是设计深度, 优化差是设备不配, 争议是玩家理解不够。\n你不是玩家, 你是公关部的外包志愿者。'
+      },
+      JLDS: {
+        name: '节奏大师',
+        color: '#ff7a45',
+        tags: ['drama', 'rage'],
+        desc: '你不解决问题, 你制造问题。\n断章取义、放大情绪、及时消失, 是你的三段共鸣技能。\n社区没有你会安静很多, 也会少很多流量。'
+      },
+      MLXR: {
+        name: '麻辣仙人',
+        color: '#ff5c9a',
+        tags: ['waifu'],
+        desc: '角色必须围着你转。\n不能有 CP, 不能有朋友, 不能有自己的生活。\n如果她笑了, 那一定是对你笑。'
+      },
+      JSYG: {
+        name: '竞速野狗',
+        color: '#5ad6b8',
+        tags: ['speed'],
+        desc: '你不看剧情, 不听音乐, 不逛风景。\n你只关心能不能再快 0.3 秒。\n快乐如果会降低效率, 你会选择不快乐。'
+      },
+      MZK: {
+        name: '米中客',
+        color: '#b48cff',
+        tags: ['logic', 'critic'],
+        desc: '你自称中立, 但句式经常是: 我不站队, 但是...\n你觉得自己很理性, 只是这份理性偶尔会精准偏向同一个方向。\n你的逻辑像开服服务器, 表面稳定, 实则排队。'
+      },
+      MMR: {
+        name: '萌萌人',
+        color: '#ffd36f',
+        tags: ['story', 'waifu'],
+        desc: '你对游戏的理解是: 哇好可爱, 啊她哭了我也哭, 这个可以当头像。\n你不是被运营拿捏, 你是主动把手伸进拿捏机里。\n你是游戏公司的 KPI。'
+      },
+      DLG: {
+        name: '毒攻略',
+        color: '#67d6ff',
+        tags: ['guide'],
+        desc: '你的视频标题是新手必看, 实际效果是带人走向错误的彼岸。\n你不是在做攻略, 你是在做筛选。\n能活着看完还不被误导的人, 才配进入下一阶段。'
+      },
+      NGL: {
+        name: '内鬼佬',
+        color: '#7cd66b',
+        tags: ['leak'],
+        desc: '你掌握一切内部消息, 准确率看心情。\n你的存在意义是让玩家提前兴奋, 提前失望, 提前开骂。\n版本还没来, 你已经把节奏排到了下个版本。'
+      },
+      CLL: {
+        name: '吃流量',
+        color: '#f28f45',
+        tags: ['chaos', 'traffic', 'ego'],
+        desc: '什么火你做什么。\n今天测评, 明天爆料, 后天开骂。\n你没有立场, 你只有推荐算法。'
+      },
+      DEAD: {
+        name: '已退坑但没完全退',
+        color: '#9c9c9c',
+        tags: ['dead'],
+        desc: '你说你不玩了。\n但你每天都在看消息。\n你不是退坑, 你是幽灵玩家, 服务器关了你可能还在评论区出没。'
+      },
+      WOC: {
+        name: '卧槽观察者',
+        color: '#ffffff',
+        tags: ['normal', 'group'],
+        desc: '不站队, 不长篇输出, 只会: 卧槽? 又来? 典。\n你是互联网的围观摄像头。\n你不生产节奏, 你只是把节奏截图给朋友。'
+      },
+      CTRL: {
+        name: '控制狂玩家',
+        color: '#5ad6b8',
+        tags: ['logic', 'guide', 'speed'],
+        desc: '你不是玩游戏, 你是在管理项目。\n资源规划精确到分钟, 声骸词条像绩效表。\n如果人生有存档键, 你已经通关三次了。'
+      },
+      SMD: {
+        name: '沉默的大多数',
+        color: '#b7b7b7',
+        tags: ['silent'],
+        desc: '你什么都知道, 但什么都不说。\n你看着社区打架, 就像看猴戏。\n偶尔点赞, 已经是你最大的参与。'
+      }
+    };
+
+    const priority = ['MXZ', 'KXZ', 'JLDS', 'MLXR', 'JSYG', 'CTRL', 'DLG', 'NGL', 'MZK', 'MMR', 'CLL', 'DEAD', 'WOC', 'SMD'];
+
+    const state = {
+      index: 0,
+      score: {},
+      lastType: null
+    };
+
+    const screens = {
+      home: document.getElementById('home'),
+      quiz: document.getElementById('quiz'),
+      result: document.getElementById('result'),
+      gallery: document.getElementById('gallery')
+    };
+
+    function showScreen(name) {
+      Object.entries(screens).forEach(([key, el]) => {
+        el.classList.toggle('active', key === name);
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetScore() {
+      state.score = {};
+      const allTags = new Set();
+      questions.forEach(q => q.a.forEach(opt => allTags.add(opt[1])));
+      allTags.forEach(tag => { state.score[tag] = 0; });
+    }
+
+    function svgFor(typeCode) {
+      const type = typeData[typeCode] || { name: 'WWTI', color: '#f4c542' };
+      const safeTitle = `${typeCode || 'WWTI'} ${type.name}`;
+      const color = type.color;
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560">
+          <rect width="900" height="560" rx="18" fill="#151515"/>
+          <path d="M54 92 C185 20 305 30 420 112 C548 204 652 174 828 78 L828 198 C650 288 530 318 392 235 C284 170 180 190 54 270 Z" fill="${color}" opacity=".28"/>
+          <path d="M90 452 C235 354 365 335 486 392 C608 450 706 438 810 360" fill="none" stroke="${color}" stroke-width="28" stroke-linecap="round" opacity=".72"/>
+          <circle cx="450" cy="280" r="116" fill="#202020" stroke="${color}" stroke-width="18"/>
+          <path d="M370 282 H530 M450 202 V358 M400 230 L500 330 M500 230 L400 330" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+          <text x="450" y="86" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="28" font-weight="800">WWTI CLASSIC</text>
+          <text x="450" y="492" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="58" font-weight="900">${safeTitle}</text>
+        </svg>
+      `;
+      return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    }
+
+    function startTest() {
+      state.index = 0;
+      state.lastType = null;
+      resetScore();
+      showScreen('quiz');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      if (state.index >= questions.length) {
+        showResult();
+        return;
+      }
+
+      const q = questions[state.index];
+      const percent = Math.round((state.index / questions.length) * 100);
+      document.getElementById('progressText').innerText = `${state.index + 1} / ${questions.length}`;
+      document.getElementById('progressBar').style.width = `${percent}%`;
+      document.getElementById('question').innerText = q.q;
+
+      document.getElementById('options').innerHTML = q.a.map(opt => {
+        return `<button class="option" onclick="choose('${opt[1]}')">${opt[0]}</button>`;
+      }).join('');
+    }
+
+    function choose(tag) {
+      if (state.score[tag] !== undefined) {
+        state.score[tag]++;
+      }
+      state.index++;
+      renderQuestion();
+    }
+
+    function pickType() {
+      const typeScores = {};
+      Object.entries(typeData).forEach(([code, type]) => {
+        typeScores[code] = type.tags.reduce((sum, tag) => sum + (state.score[tag] || 0), 0);
+      });
+
+      for (const code of priority) {
+        if (typeScores[code] >= 2) {
+          return { code, typeScores };
+        }
+      }
+
+      return { code: 'SMD', typeScores };
+    }
+
+    function renderScoreList() {
+      return Object.entries(state.score)
+        .filter(([, value]) => value > 0)
+        .sort((a, b) => b[1] - a[1])
+        .map(([tag, value]) => `<span class="score-pill">${tag}: ${value}</span>`)
+        .join('');
+    }
+
+    function showResult() {
+      document.getElementById('progressBar').style.width = '100%';
+      const picked = pickType();
+      const type = typeData[picked.code];
+      state.lastType = picked.code;
+
+      document.getElementById('resultCard').innerHTML = `
+        <div class="eyebrow">你的 WWTI 类型是</div>
+        <h1 class="result-code">${picked.code}</h1>
+        <h2 class="result-name">${type.name}</h2>
+        <p class="desc">${type.desc}</p>
+        <img class="result-img" src="${svgFor(picked.code)}" alt="${picked.code} ${type.name}">
+        <div class="score-list">${renderScoreList()}</div>
+        <div class="actions">
+          <button class="btn btn-accent" onclick="startTest()">再测一次</button>
+          <button class="btn btn-ghost" onclick="showGallery('${picked.code}')">查看图鉴</button>
+          <button class="btn btn-ghost" onclick="showScreen('home')">回首页</button>
+        </div>
+      `;
+      showScreen('result');
+    }
+
+    function renderGallery() {
+      document.getElementById('galleryGrid').innerHTML = priority.map(code => {
+        const type = typeData[code];
+        return `
+          <button class="type-card" onclick="renderTypeDetail('${code}')">
+            <img class="type-img" src="${svgFor(code)}" alt="${code} ${type.name}">
+            <strong>${code} - ${type.name}</strong>
+            <span>${type.desc.split('\\n')[0]}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderTypeDetail(code) {
+      const type = typeData[code];
+      const detail = document.getElementById('typeDetail');
+      detail.classList.add('active');
+      detail.innerHTML = `
+        <img class="type-img" src="${svgFor(code)}" alt="${code} ${type.name}">
+        <div>
+          <h3>${code} - ${type.name}</h3>
+          <p>${type.desc}</p>
+          <p>命中标签: ${type.tags.join(' / ')}</p>
+        </div>
+      `;
+      detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function showGallery(focusCode) {
+      showScreen('gallery');
+      renderGallery();
+      const detail = document.getElementById('typeDetail');
+      if (focusCode && typeData[focusCode]) {
+        renderTypeDetail(focusCode);
+      } else {
+        detail.classList.remove('active');
+        detail.innerHTML = '';
+      }
+    }
+
+    document.getElementById('homeImg').src = svgFor('WWTI');
+    document.getElementById('startBtn').addEventListener('click', startTest);
+    document.getElementById('galleryBtn').addEventListener('click', () => showGallery());
+    document.getElementById('restartMidBtn').addEventListener('click', startTest);
+    document.getElementById('homeMidBtn').addEventListener('click', () => showScreen('home'));
+    document.getElementById('galleryStartBtn').addEventListener('click', startTest);
+    document.getElementById('galleryHomeBtn').addEventListener('click', () => showScreen('home'));
+  </script>
+</body>
+</html>

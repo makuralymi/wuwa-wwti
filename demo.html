@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>WWTI经典版人格测试</title>
+
+<style>
+body {
+  background:#111;
+  color:#fff;
+  font-family: Arial;
+  text-align:center;
+}
+
+.card {
+  max-width:600px;
+  margin:50px auto;
+  padding:20px;
+  background:#222;
+  border-radius:12px;
+}
+
+button {
+  display:block;
+  margin:10px auto;
+  padding:10px 20px;
+  background:#444;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  width:80%;
+}
+
+button:hover {
+  background:#666;
+}
+
+img {
+  width:100%;
+  margin-top:20px;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="app">
+<h2 id="question">加载中...</h2>
+<div id="options"></div>
+</div>
+
+<script>
+
+// ===== 题库（经典版）=====
+const questions = [
+
+{
+q:"你怎么看鸣潮？",
+a:[
+["神作","mx"],
+["未来可期","kz"],
+["一般","neutral"],
+["看乐子","chaos"]
+]
+},
+
+{
+q:"你最常刷的视频？",
+a:[
+["对比视频","mx"],
+["吹爆视频","kz"],
+["攻略","guide"],
+["吵架剪辑","drama"]
+]
+},
+
+{
+q:"你会看剧情吗？",
+a:[
+["全跳","speed"],
+["只看喜欢角色","waifu"],
+["认真看","story"],
+["看完吐槽","critic"]
+]
+},
+
+{
+q:"你评论的目的？",
+a:[
+["分享体验","normal"],
+["找认同","group"],
+["刷存在","ego"],
+["带节奏","drama"]
+]
+},
+
+{
+q:"看到争议你会？",
+a:[
+["分析","logic"],
+["开骂","rage"],
+["不说话","silent"],
+["阴阳","drama"]
+]
+},
+
+{
+q:"你最在意什么？",
+a:[
+["强度","speed"],
+["角色","waifu"],
+["剧情","story"],
+["乐子","chaos"]
+]
+}
+
+];
+
+
+// ===== 分数 =====
+let score = {
+mx:0,
+kz:0,
+drama:0,
+logic:0,
+rage:0,
+silent:0,
+waifu:0,
+speed:0,
+chaos:0
+};
+
+let index = 0;
+
+
+// ===== 渲染题目 =====
+function render(){
+if(index >= questions.length){
+return showResult();
+}
+
+const q = questions[index];
+document.getElementById("question").innerText = q.q;
+
+let html="";
+q.a.forEach(opt=>{
+html += `<button onclick="choose('${opt[1]}')">${opt[0]}</button>`;
+});
+
+document.getElementById("options").innerHTML = html;
+}
+
+
+// ===== 选择 =====
+function choose(type){
+if(score[type]!==undefined){
+score[type]++;
+}
+index++;
+render();
+}
+
+
+// ===== 人格判定 =====
+function showResult(){
+
+let type = "SMD"; //默认沉默多数
+
+// 优先级判断
+if(score.mx >=2) type="MXZ";
+else if(score.kz >=2) type="KXZ";
+else if(score.drama >=2 || score.rage>=2) type="JLDS";
+else if(score.waifu >=2) type="MLXR";
+else if(score.speed >=2) type="JSYG";
+else if(score.logic >=2) type="MZK";
+else if(score.chaos >=2) type="CLL";
+else if(score.silent >=2) type="SMD";
+
+
+// ===== 人格数据 =====
+const data = {
+
+MXZ:{
+name:"米孝子",
+desc:"你玩游戏的唯一目的，是证明它不如另一款游戏。",
+img:"https://source.unsplash.com/600x400/?fanboy,gaming"
+},
+
+KXZ:{
+name:"库孝子",
+desc:"你不是玩家，你是信徒。BUG只是你理解不够。",
+img:"https://source.unsplash.com/600x400/?cult,loyal"
+},
+
+JLDS:{
+name:"节奏大师",
+desc:"你不解决问题，你制造问题。",
+img:"https://source.unsplash.com/600x400/?protest,chaos"
+},
+
+MLXR:{
+name:"麻辣仙人",
+desc:"角色必须围着你转，她们不能有自己的生活。",
+img:"https://source.unsplash.com/600x400/?anime,girl"
+},
+
+JSYG:{
+name:"竞速野狗",
+desc:"快乐不重要，效率才是。",
+img:"https://source.unsplash.com/600x400/?speed,runner"
+},
+
+MZK:{
+name:"米中客",
+desc:"你以为自己理性，其实只是更隐蔽。",
+img:"https://source.unsplash.com/600x400/?judge,thinking"
+},
+
+CLL:{
+name:"吃流量",
+desc:"你没有立场，你只有热点。",
+img:"https://source.unsplash.com/600x400/?social,media"
+},
+
+SMD:{
+name:"沉默的大多数",
+desc:"你什么都知道，但什么都不说。",
+img:"https://source.unsplash.com/600x400/?alone,quiet"
+}
+
+};
+
+
+const r = data[type];
+
+document.getElementById("app").innerHTML = `
+<h1>${type} - ${r.name}</h1>
+<p>${r.desc}</p>
+<img src="${r.img}">
+<button onclick="location.reload()">再测一次</button>
+`;
+
+}
+
+
+// 启动
+render();
+
+</script>
+
+</body>
+</html>
