@@ -130,6 +130,245 @@
       background: #181818;
     }
 
+    .hero-host {
+      width: 100%;
+      max-width: 560px;
+      margin: 20px auto 0;
+    }
+
+    .type-art {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 18% 20%, var(--art-glow), transparent 30%),
+        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.08), transparent 18%),
+        linear-gradient(145deg, var(--art-fade), rgba(255, 255, 255, 0.03) 42%, rgba(0, 0, 0, 0.16)),
+        #151515;
+      isolation: isolate;
+    }
+
+    .type-art-large {
+      max-width: 560px;
+      min-height: 360px;
+      margin: 20px auto 0;
+      padding: 18px;
+    }
+
+    .type-art-small {
+      min-height: 238px;
+      padding: 12px;
+    }
+
+    .art-kicker {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      padding: 6px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 999px;
+      background: rgba(20, 20, 20, 0.78);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .type-art-small .art-kicker {
+      top: 12px;
+      left: 12px;
+      max-width: calc(100% - 24px);
+      font-size: 11px;
+    }
+
+    .art-code {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1;
+      color: var(--art-accent);
+      font-size: clamp(42px, 8vw, 86px);
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0.14;
+      letter-spacing: 0;
+    }
+
+    .type-art-small .art-code {
+      font-size: 52px;
+    }
+
+    .art-icons {
+      position: absolute;
+      inset: 54px 12px 76px 12px;
+      z-index: 1;
+    }
+
+    .type-art-small .art-icons {
+      inset: 54px 8px 64px 8px;
+    }
+
+    .art-icon {
+      position: absolute;
+      display: block;
+      width: 42%;
+      max-width: 220px;
+      filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.28));
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .art-icon-1 {
+      left: 4%;
+      bottom: 0;
+      transform: rotate(-12deg);
+    }
+
+    .art-icon-2 {
+      right: 4%;
+      top: 4%;
+      width: 34%;
+      transform: rotate(11deg);
+    }
+
+    .art-icon-3 {
+      left: 30%;
+      top: 6%;
+      width: 24%;
+      transform: rotate(8deg);
+    }
+
+    .art-icon-4 {
+      right: 24%;
+      bottom: 4%;
+      width: 22%;
+      transform: rotate(-9deg);
+    }
+
+    .type-art-small .art-icon-1 {
+      width: 45%;
+      left: 2%;
+    }
+
+    .type-art-small .art-icon-2 {
+      width: 36%;
+      right: 2%;
+    }
+
+    .art-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+    }
+
+    .type-art-small .art-caption {
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      display: block;
+    }
+
+    .art-title {
+      display: block;
+      color: #fff;
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 900;
+      line-height: 1.08;
+      text-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .type-art-small .art-title {
+      font-size: 19px;
+    }
+
+    .art-subtitle {
+      display: block;
+      margin-top: 6px;
+      color: var(--art-accent);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .type-art-small .art-subtitle {
+      font-size: 12px;
+    }
+
+    .art-note {
+      display: block;
+      max-width: 240px;
+      color: #e8e8e8;
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    .type-art-small .art-note {
+      max-width: none;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: left;
+    }
+
+    .home-art {
+      min-height: 380px;
+    }
+
+    .home-art .art-icons {
+      inset: 58px 10px 96px 10px;
+    }
+
+    .home-art .art-caption {
+      display: block;
+      text-align: left;
+    }
+
+    .home-art .art-note {
+      max-width: none;
+      margin-top: 12px;
+      text-align: left;
+    }
+
+    .home-badges {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 116px;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .home-badge {
+      padding: 6px 9px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 999px;
+      background: rgba(18, 18, 18, 0.78);
+      color: #f3f3f3;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .result-taunt {
+      margin-top: 10px;
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.7;
+    }
+
     .progress {
       margin-bottom: 16px;
       color: var(--muted);
@@ -198,6 +437,36 @@
       font-size: 12px;
     }
 
+    .option-label {
+      display: block;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .option {
+      text-align: left;
+    }
+
+    .option-meta {
+      display: block;
+      margin-top: 6px;
+      color: var(--accent);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .cheat-tip {
+      margin-bottom: 16px;
+      padding: 10px 12px;
+      border: 1px dashed rgba(244, 197, 66, 0.45);
+      border-radius: var(--radius);
+      background: rgba(244, 197, 66, 0.08);
+      color: #f8e29b;
+      font-size: 12px;
+      line-height: 1.7;
+      text-align: left;
+    }
+
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -222,6 +491,14 @@
       margin-top: 10px;
       font-size: 18px;
       line-height: 1.35;
+    }
+    .type-card .type-taunt {
+      display: block;
+      margin-top: 6px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.55;
     }
     .type-card span {
       display: block;
@@ -277,8 +554,8 @@
       <div class="card">
         <div class="eyebrow">WWTI classic</div>
         <h1 class="title">鸣潮社区人格测试</h1>
-        <p class="subtitle">参考 demo.html 的经典版: 题少、嘴毒、按标签计数。不要拿它当正经心理测评, 这只是给互联网围观群众做的电子外号生成器。</p>
-        <img id="homeImg" class="hero-art" alt="WWTI 经典版封面" />
+        <p class="subtitle">不要拿它当正经心理测评, 这只是给互联网围观群众做的电子外号生成器。</p>
+        <div id="homeHero" class="hero-host"></div>
         <div class="actions">
           <button class="btn btn-accent" id="startBtn">开始测试</button>
           <button class="btn btn-ghost" id="galleryBtn">查看人格图鉴</button>
@@ -293,6 +570,7 @@
           <span id="progressText">1 / 12</span>
           <div class="bar"><span id="progressBar"></span></div>
         </div>
+        <div id="cheatTip" class="cheat-tip" hidden></div>
         <h2 id="question">加载中...</h2>
         <div id="options"></div>
         <div class="actions">
@@ -328,17 +606,19 @@
         a: [
           ['神作, 不接受反驳', 'kz'],
           ['一般, 但我还在玩', 'silent'],
-          ['未来可期, 先别急', 'kz'],
-          ['我主要看乐子', 'chaos']
+          ['一坨答辩', 'kh'],
+          ['我主要看乐子', 'chaos'],
+          ['角色好看, 我先入坑', 'waifu']
         ]
       },
       {
         q: '你最常刷哪类视频?',
         a: [
-          ['单推角色二创', 'oshi'],
+          ['角色二创和名场面剪辑', 'oshi'],
           ['吹爆或怒喷视频', 'drama'],
           ['配队和声骸攻略', 'guide'],
-          ['评论区吵架切片', 'chaos']
+          ['剧情解析和角色考据', 'story'],
+          ['测试服偷跑爆料', 'leak']
         ]
       },
       {
@@ -347,25 +627,28 @@
           ['全跳, 奖励在哪', 'speed'],
           ['只看我推的角色', 'waifu'],
           ['认真看, 还会复盘', 'story'],
-          ['看完专门找槽点', 'critic']
+          ['看完专门找槽点', 'critic'],
+          ['只看名场面切片', 'normal']
         ]
       },
       {
         q: '你发评论的主要目的是什么?',
         a: [
           ['分享体验', 'normal'],
-          ['找同温层', 'group'],
+          ['替玩家抱不平', 'kh'],
           ['带点节奏', 'drama'],
-          ['刷存在感', 'ego']
+          ['刷存在感', 'chaos'],
+          ['给新人指路', 'guide']
         ]
       },
       {
         q: '看到版本争议, 你第一反应是?',
         a: [
           ['先看完整信息再说', 'logic'],
-          ['开骂, 这还用想?', 'rage'],
+          ['库洛又来了', 'kh'],
           ['不说话, 看猴戏', 'silent'],
-          ['先护一手, 等反转', 'kz']
+          ['先护一手, 等反转', 'kz'],
+          ['先搬板凳, 等开庭', 'chaos']
         ]
       },
       {
@@ -374,16 +657,18 @@
           ['强度和效率', 'speed'],
           ['角色和人设', 'waifu'],
           ['剧情和演出', 'story'],
-          ['乐子和流量', 'chaos']
+          ['乐子和流量', 'chaos'],
+          ['声骸词条毕业', 'echo']
         ]
       },
       {
         q: '如果官方犯错, 你会?',
         a: [
           ['理性分析问题', 'logic'],
-          ['直接开喷', 'rage'],
-          ['先截图, 看谁能赢', 'chaos'],
-          ['做素材, 赶热度', 'traffic']
+          ['搬出旧账一起算', 'kh'],
+          ['当做没看见', 'silent'],
+          ['做素材, 赶热度', 'traffic'],
+          ['等公告补偿再评价', 'normal']
         ]
       },
       {
@@ -392,7 +677,8 @@
           ['不关我事', 'silent'],
           ['不比较, 我只玩我想玩的', 'normal'],
           ['看吵架比看游戏有意思', 'chaos'],
-          ['谁吵得凶我看谁', 'chaos']
+          ['拿隔壁给库洛上课', 'kh'],
+          ['两边都玩, 所以我最客观', 'ego']
         ]
       },
       {
@@ -401,7 +687,8 @@
           ['倍率和机制', 'speed'],
           ['立绘和性格', 'waifu'],
           ['有没有节奏点', 'drama'],
-          ['偷跑情报准不准', 'leak']
+          ['偷跑情报准不准', 'leak'],
+          ['戏份多不多', 'oshi']
         ]
       },
       {
@@ -410,7 +697,8 @@
           ['其实可以更好', 'logic'],
           ['你懂个屁', 'rage'],
           ['无所谓', 'silent'],
-          ['我早就说了', 'ego']
+          ['我早就说了', 'ego'],
+          ['先别急, 看后续', 'normal']
         ]
       },
       {
@@ -419,7 +707,8 @@
           ['立刻收藏照抄', 'guide'],
           ['先看评论区有没有骂错', 'critic'],
           ['转发给朋友一起审判', 'group'],
-          ['我自己会算, 不用你教', 'logic']
+          ['我自己会算, 不用你教', 'logic'],
+          ['直接打成收米作业', 'drama']
         ]
       },
       {
@@ -427,8 +716,9 @@
         a: [
           ['真不看了', 'silent'],
           ['每天还刷消息', 'dead'],
-          ['回来骂两句再走', 'rage'],
-          ['等下个大节奏', 'chaos']
+          ['回来确认我没亏', 'ego'],
+          ['等下个大节奏', 'chaos'],
+          ['回来领补偿再走', 'normal']
         ]
       },
       {
@@ -437,25 +727,8 @@
           ['先看来源, 当情报参考', 'leak'],
           ['等官方, 不被剧透', 'silent'],
           ['转给朋友一起吃瓜', 'group'],
-          ['看机制会不会影响抽卡', 'logic']
-        ]
-      },
-      {
-        q: '看到“测试服改动”帖子, 你最像?',
-        a: [
-          ['蹲后续爆料和拆包图', 'leak'],
-          ['看数据再调整资源规划', 'guide'],
-          ['直接开骂怎么又改', 'rage'],
-          ['不点, 怕剧透', 'silent']
-        ]
-      },
-      {
-        q: '有人说新角色被偷跑了, 你会?',
-        a: [
-          ['问有没有原图和时间线', 'leak'],
-          ['只看立绘好不好看', 'waifu'],
-          ['看评论区谁在带节奏', 'drama'],
-          ['等实装再说', 'normal']
+          ['看机制会不会影响抽卡', 'logic'],
+          ['先看立绘戳不戳我', 'waifu']
         ]
       },
       {
@@ -464,25 +737,28 @@
           ['强度够高, 能改善体验', 'speed'],
           ['我单推, 不抽不算活着', 'oshi'],
           ['剧情写得好, 我被打动了', 'story'],
-          ['先看节奏和评价再说', 'critic']
+          ['想给队伍补最后一块拼图', 'guide'],
+          ['不抽怕以后后悔', 'normal']
         ]
       },
       {
         q: '刷到一个能用但不完美的声骸, 你会?',
         a: [
           ['先用着, 不折磨自己', 'silent'],
-          ['继续刷, 这词条不干净', 'echo'],
-          ['看攻略说能不能毕业', 'guide'],
-          ['算提升值再决定', 'logic']
+          ['继续刷, 词条不够好', 'echo'],
+          ['问大佬能不能凑合用', 'group'],
+          ['算提升值再决定', 'logic'],
+          ['截图发群求安慰', 'group']
         ]
       },
       {
         q: '你最受不了哪种情况?',
         a: [
-          ['单推角色戏份太少', 'oshi'],
+          ['喜欢的角色戏份太少', 'oshi'],
           ['声骸副词条全歪', 'echo'],
           ['官方又犯低级错误', 'rage'],
-          ['社区天天复读同一套节奏', 'critic']
+          ['社区天天复读同一套节奏', 'critic'],
+          ['攻略讲错还没人纠正', 'guide']
         ]
       }
     ];
@@ -496,12 +772,20 @@
         unlock: '护游/信仰倾向达到 2 分。',
         desc: '你不玩游戏, 你是在守护信仰。\nBUG 是设计深度, 优化差是设备不配, 争议是玩家理解不够。\n你不是玩家, 你是公关部的外包志愿者。'
       },
-      JLDS: {
+      KH: {
+        name: '库黑',
+        color: '#ff5c7a',
+        tags: ['kh'],
+        threshold: 2,
+        unlock: '稳定归因到库洛/官方问题的倾向达到 2 分。',
+        desc: '你不是不满意某个版本, 你是已经把库洛写进嫌疑人名单第一行。\n争议还没展开, 你先把锅盖递过去。\n你不一定每次都错, 但你每次都准备好了那句: 我早说过。'
+      },
+      JZDS: {
         name: '节奏大师',
         color: '#ff7a45',
-        tags: ['drama', 'rage'],
+        tags: ['drama', 'rage', 'chaos', 'traffic'],
         threshold: 2,
-        unlock: '节奏或开骂倾向合计达到 2 分。',
+        unlock: '节奏/开骂/看乐子/赶热度倾向合计达到 2 分。',
         desc: '你不解决问题, 你制造问题。\n断章取义、放大情绪、及时消失, 是你的三段共鸣技能。\n社区没有你会安静很多, 也会少很多流量。'
       },
       MLXR: {
@@ -521,7 +805,7 @@
         desc: '你的账号不是账号, 是本命的电子痛包。\n强度可以等售后, 剧情可以靠脑补, 但镜头少一秒你都要记进小本本。\n别人抽角色是扩充队伍, 你抽角色是在给单推交物业费。'
       },
       SPEED: {
-        name: '竞速野狗',
+        name: '竞速椰果',
         color: '#5ad6b8',
         tags: ['speed'],
         threshold: 2,
@@ -539,9 +823,9 @@
       MZK: {
         name: '伪理中客',
         color: '#b48cff',
-        tags: ['logic', 'critic'],
+        tags: ['logic', 'critic', 'ego'],
         threshold: 2,
-        unlock: '理性分析或挑刺倾向合计达到 2 分。',
+        unlock: '理性分析/挑刺/优越感倾向合计达到 2 分。',
         desc: '你每句话都从“我不站队”开始, 然后精准站到同一边。\n你不是没有立场, 你只是给立场穿了件客观外套。\n别人吵架靠嗓门, 你靠标点符号和三段论阴阳。'
       },
       MMR: {
@@ -579,7 +863,7 @@
       CTRL: {
         name: '指导厨',
         color: '#5ad6b8',
-        tags: ['logic', 'guide', 'speed'],
+        tags: ['logic', 'guide'],
         threshold: 2,
         unlock: '攻略/纠错/效率指导倾向合计达到 2 分。',
         desc: '你看到别人玩游戏, 就像教导主任看到学生没穿校服。\n配队要管, 词条要管, 手法要管, 连别人爽不爽你都要审批。\n你不是攻略作者, 你是评论区流动监考。'
@@ -594,13 +878,200 @@
       }
     };
 
-    const galleryOrder = ['KXZ', 'JLDS', 'MLXR', 'OSHI', 'SPEED', 'ECHO', 'CTRL', 'LEAK', 'MZK', 'MMR', 'DEAD', 'WOC', 'SMD'];
-    const resultOrder = ['KXZ', 'JLDS', 'MLXR', 'OSHI', 'SPEED', 'ECHO', 'LEAK', 'CTRL', 'MZK', 'MMR', 'DEAD', 'WOC', 'SMD'];
+    const galleryOrder = ['KXZ', 'KH', 'JZDS', 'MLXR', 'OSHI', 'SPEED', 'ECHO', 'CTRL', 'LEAK', 'MZK', 'MMR', 'DEAD', 'WOC', 'SMD'];
+    const resultOrder = ['KXZ', 'KH', 'JZDS', 'MLXR', 'OSHI', 'SPEED', 'ECHO', 'LEAK', 'CTRL', 'MZK', 'MMR', 'DEAD', 'WOC', 'SMD'];
+    const typeArt = {
+      KXZ: {
+        kicker: '这波我先护一下',
+        subtitle: '玩家受苦不重要, 信仰不能输',
+        note: '先想想是不是玩家不懂',
+        icons: ['assets/openmoji/1F6E1.svg', 'assets/openmoji/1F451.svg']
+      },
+      KH: {
+        kicker: '我就知道要出事',
+        subtitle: '版本刚更新, 罪名先写好',
+        note: '锅先递过去再说',
+        icons: ['assets/openmoji/1F50D.svg', 'assets/openmoji/1F6A8.svg']
+      },
+      JZDS: {
+        kicker: '别管真假先起势',
+        subtitle: '没证据也能把评论区点着',
+        note: '真相没到, 流量先到',
+        icons: ['assets/openmoji/1F4E2.svg', 'assets/openmoji/1F525.svg']
+      },
+      MLXR: {
+        kicker: '她对我笑了',
+        subtitle: '角色不是角色, 是你的电子后宫',
+        note: '不能有 CP, 只能有我',
+        icons: ['assets/openmoji/1F60D.svg', 'assets/openmoji/1F339.svg']
+      },
+      OSHI: {
+        kicker: '我推就是唯一真神',
+        subtitle: '本命少一秒镜头都算工伤',
+        note: '本命镜头按帧结算',
+        icons: ['assets/openmoji/2728.svg', 'assets/openmoji/1F49D.svg']
+      },
+      SPEED: {
+        kicker: '0.3 秒也是秒',
+        subtitle: '伤害低一点都像浪费人生',
+        note: '快乐会拖慢手法',
+        icons: ['assets/openmoji/23F1.svg', 'assets/openmoji/1F45F.svg']
+      },
+      ECHO: {
+        kicker: '这词条不够毕业',
+        subtitle: '副词条歪一次就想重开账号',
+        note: '双爆不对等于白刷',
+        icons: ['assets/openmoji/1F52C.svg', 'assets/openmoji/1F48E.svg']
+      },
+      CTRL: {
+        kicker: '你这配队不对',
+        subtitle: '别人不会玩, 你比他更着急',
+        note: '别人随便玩也要改卷',
+        icons: ['assets/openmoji/1F4CB.svg', 'assets/openmoji/261D.svg']
+      },
+      LEAK: {
+        kicker: '前瞻前我已知晓',
+        subtitle: '前瞻没开, 你已经过完下版本',
+        note: '版本没开, 情绪先开',
+        icons: ['assets/openmoji/1F4F0.svg', 'assets/openmoji/1F440.svg']
+      },
+      MZK: {
+        kicker: '我只是客观',
+        subtitle: '嘴上不站队, 手上全是判词',
+        note: '句句理性, 句句带刺',
+        icons: ['assets/openmoji/1F9D0.svg', 'assets/openmoji/2696.svg']
+      },
+      MMR: {
+        kicker: '呜呜她好可爱',
+        subtitle: '剧情一煽情, 头像框先换上',
+        note: '会哭会存表情包',
+        icons: ['assets/openmoji/1F97A.svg', 'assets/openmoji/1F9F8.svg']
+      },
+      DEAD: {
+        kicker: '退了, 但每天都看',
+        subtitle: '嘴上退坑, 身体还在签到',
+        note: '人退坑了, 号还在巡逻',
+        icons: ['assets/openmoji/1F47B.svg', 'assets/openmoji/1F4F1.svg']
+      },
+      WOC: {
+        kicker: '卧槽, 发群里',
+        subtitle: '自己不吵, 但一定转给别人看',
+        note: '不下场, 只截图',
+        icons: ['assets/openmoji/1F4F9.svg', 'assets/openmoji/1F37F.svg']
+      },
+      SMD: {
+        kicker: '我就看看',
+        subtitle: '全都知道, 只是懒得搭理',
+        note: '看完点个赞就走',
+        icons: ['assets/openmoji/1F910.svg', 'assets/openmoji/1F440.svg']
+      }
+    };
+
+    const homeArt = {
+      kicker: '全员嘴硬版总海报',
+      title: '测你是哪种鸣潮社区人口',
+      subtitle: '16 道题, 不测心理学, 只测你会在哪种评论区站到最后',
+      note: '护游的、挑刺的、吃瓜的、退坑还巡逻的, 都跑不掉。',
+      icons: [
+        'assets/openmoji/1F6E1.svg',
+        'assets/openmoji/1F525.svg',
+        'assets/openmoji/1F49D.svg',
+        'assets/openmoji/1F47B.svg'
+      ],
+      badges: ['护游嘴硬', '吃瓜转发', '词条劳改', '退坑巡逻', '理中客开庭', '本命电子供奉']
+    };
+
+    function withAlpha(hex, alpha) {
+      const safeHex = (hex || '#f4c542').replace('#', '');
+      const normalized = safeHex.length === 3
+        ? safeHex.split('').map(char => char + char).join('')
+        : safeHex;
+      const r = parseInt(normalized.slice(0, 2), 16);
+      const g = parseInt(normalized.slice(2, 4), 16);
+      const b = parseInt(normalized.slice(4, 6), 16);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    function renderTypeArt(code, variant = 'large') {
+      const type = typeData[code];
+      const art = typeArt[code];
+      if (!type || !art) {
+        return `<img class="${variant === 'small' ? 'type-img' : 'result-img'}" src="${svgFor(code)}" alt="${code} ${type ? type.name : 'WWTI'}">`;
+      }
+
+      const iconMarkup = art.icons.map((src, index) => `
+        <img class="art-icon art-icon-${index + 1}" src="${src}" alt="" aria-hidden="true">
+      `).join('');
+
+      return `
+        <div
+          class="type-art ${variant === 'small' ? 'type-art-small' : 'type-art-large'}"
+          role="img"
+          aria-label="${code} ${type.name} 配图: ${art.kicker}"
+          style="--art-accent: ${type.color}; --art-glow: ${withAlpha(type.color, 0.28)}; --art-fade: ${withAlpha(type.color, 0.10)};"
+        >
+          <div class="art-kicker">${art.kicker}</div>
+          <div class="art-code">${code}</div>
+          <div class="art-icons">${iconMarkup}</div>
+          <div class="art-caption">
+            <div>
+              <strong class="art-title">${type.name}</strong>
+              <span class="art-subtitle">${art.subtitle}</span>
+            </div>
+            <span class="art-note">${art.note}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderHomeArt() {
+      const iconMarkup = homeArt.icons.map((src, index) => `
+        <img class="art-icon art-icon-${index + 1}" src="${src}" alt="" aria-hidden="true">
+      `).join('');
+      const badgeMarkup = homeArt.badges.map(label => `<span class="home-badge">${label}</span>`).join('');
+
+      return `
+        <div
+          class="type-art type-art-large home-art"
+          role="img"
+          aria-label="WWTI 总海报"
+          style="--art-accent: #f4c542; --art-glow: rgba(244, 197, 66, 0.26); --art-fade: rgba(255, 92, 122, 0.10);"
+        >
+          <div class="art-kicker">${homeArt.kicker}</div>
+          <div class="art-code">WWTI</div>
+          <div class="art-icons">${iconMarkup}</div>
+          <div class="home-badges">${badgeMarkup}</div>
+          <div class="art-caption">
+            <strong class="art-title">${homeArt.title}</strong>
+            <span class="art-subtitle">${homeArt.subtitle}</span>
+            <span class="art-note">${homeArt.note}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function queryHasCheat() {
+      const pageQuery = new URLSearchParams(window.location.search);
+      if (pageQuery.get('cheat') === '1') {
+        return true;
+      }
+
+      const hashQueryStart = window.location.hash.indexOf('?');
+      if (hashQueryStart === -1) {
+        return false;
+      }
+
+      const hashQuery = new URLSearchParams(window.location.hash.slice(hashQueryStart + 1));
+      return hashQuery.get('cheat') === '1';
+    }
+
+    const cheatMode = queryHasCheat();
 
     const state = {
       index: 0,
       score: {},
-      lastType: null
+      lastType: null,
+      roundQuestions: []
     };
 
     const screens = {
@@ -633,6 +1104,23 @@
       return getTypeScore(type) >= type.threshold;
     }
 
+    function getTypesForTag(tag) {
+      return resultOrder.filter(code => typeData[code].tags.includes(tag));
+    }
+
+    function renderOptionMeta(tag) {
+      if (!cheatMode) {
+        return '';
+      }
+
+      const linkedTypes = getTypesForTag(tag);
+      const typeText = linkedTypes.length
+        ? linkedTypes.map(code => `${code} ${typeData[code].name}`).join(' / ')
+        : '当前不直接关联人格';
+
+      return `<span class="option-meta">+1 ${tag} · 关联人格: ${typeText}</span>`;
+    }
+
     function svgFor(typeCode) {
       const type = typeData[typeCode] || { name: 'WWTI', color: '#f4c542' };
       const safeTitle = `${typeCode || 'WWTI'} ${type.name}`;
@@ -651,28 +1139,59 @@
       return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
     }
 
+    function shuffleArray(items) {
+      const result = [...items];
+      for (let i = result.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [result[i], result[j]] = [result[j], result[i]];
+      }
+      return result;
+    }
+
+    function buildRoundQuestions() {
+      return shuffleArray(questions.map(question => ({
+        q: question.q,
+        a: shuffleArray(question.a.map(option => [...option]))
+      })));
+    }
+
     function startTest() {
       state.index = 0;
       state.lastType = null;
+      state.roundQuestions = buildRoundQuestions();
       resetScore();
       showScreen('quiz');
       renderQuestion();
     }
 
     function renderQuestion() {
-      if (state.index >= questions.length) {
+      if (state.index >= state.roundQuestions.length) {
         showResult();
         return;
       }
 
-      const q = questions[state.index];
-      const percent = Math.round((state.index / questions.length) * 100);
-      document.getElementById('progressText').innerText = `${state.index + 1} / ${questions.length}`;
+      const q = state.roundQuestions[state.index];
+      const percent = Math.round((state.index / state.roundQuestions.length) * 100);
+      document.getElementById('progressText').innerText = `${state.index + 1} / ${state.roundQuestions.length}`;
       document.getElementById('progressBar').style.width = `${percent}%`;
       document.getElementById('question').innerText = q.q;
+      const cheatTip = document.getElementById('cheatTip');
+
+      if (cheatMode) {
+        cheatTip.hidden = false;
+        cheatTip.innerText = 'Cheat 模式已开启: 每个选项都会显示 +1 的标签，以及该标签会影响哪些人格。最终结果仍受阈值和优先级影响。';
+      } else {
+        cheatTip.hidden = true;
+        cheatTip.innerText = '';
+      }
 
       document.getElementById('options').innerHTML = q.a.map(opt => {
-        return `<button class="option" onclick="choose('${opt[1]}')">${opt[0]}</button>`;
+        return `
+          <button class="option" onclick="choose('${opt[1]}')">
+            <span class="option-label">${opt[0]}</span>
+            ${renderOptionMeta(opt[1])}
+          </button>
+        `;
       }).join('');
     }
 
@@ -717,8 +1236,9 @@
         <div class="eyebrow">你的 WWTI 类型是</div>
         <h1 class="result-code">${picked.code}</h1>
         <h2 class="result-name">${type.name}</h2>
+        <p class="result-taunt">${typeArt[picked.code].subtitle}</p>
         <p class="desc">${type.desc}</p>
-        <img class="result-img" src="${svgFor(picked.code)}" alt="${picked.code} ${type.name}">
+        ${renderTypeArt(picked.code, 'large')}
         <div class="score-list">${renderScoreList()}</div>
         <div class="actions">
           <button class="btn btn-accent" onclick="startTest()">再测一次</button>
@@ -734,8 +1254,9 @@
         const type = typeData[code];
         return `
           <button class="type-card" onclick="renderTypeDetail('${code}')">
-            <img class="type-img" src="${svgFor(code)}" alt="${code} ${type.name}">
+            ${renderTypeArt(code, 'small')}
             <strong>${code} - ${type.name}</strong>
+            <span class="type-taunt">${typeArt[code].subtitle}</span>
             <span>${type.desc.split('\\n')[0]}</span>
           </button>
         `;
@@ -747,9 +1268,10 @@
       const detail = document.getElementById('typeDetail');
       detail.classList.add('active');
       detail.innerHTML = `
-        <img class="type-img" src="${svgFor(code)}" alt="${code} ${type.name}">
+        ${renderTypeArt(code, 'large')}
         <div>
           <h3>${code} - ${type.name}</h3>
+          <p class="result-taunt">${typeArt[code].subtitle}</p>
           <p>${type.desc}</p>
           <p>达成方式: ${type.unlock}</p>
           <p>命中标签: ${type.tags.join(' / ')}</p>
@@ -770,7 +1292,10 @@
       }
     }
 
-    document.getElementById('homeImg').src = svgFor('WWTI');
+    document.getElementById('homeHero').innerHTML = renderHomeArt();
+    if (cheatMode) {
+      document.querySelector('#home .note').innerText = '当前已启用 cheat 模式。答题页会显示每个选项的加分标签和关联人格。';
+    }
     document.getElementById('startBtn').addEventListener('click', startTest);
     document.getElementById('galleryBtn').addEventListener('click', () => showGallery());
     document.getElementById('restartMidBtn').addEventListener('click', startTest);
